@@ -12,7 +12,6 @@
 
 ![GURL desktop preview](gurl-ui-desktop-preview.png)
 
-![GURL mobile preview](gurl-ui-mobile-preview.png)
 
 ## Features
 
