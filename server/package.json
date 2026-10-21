@@ -1,0 +1,22 @@
+{
+  "name": "gurl-server",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "db:init": "node scripts/init-db.js"
+  },
+  "dependencies": {
+    "astronomy-engine": "^2.1.19",
+    "better-auth": "^1.6.0",
+    "dotenv": "^16.5.0",
+    "express": "^4.21.2",
+    "express-rate-limit": "^8.7.1",
+    "geo-tz": "^8.1.9",
+    "luxon": "^3.6.1",
+    "pg": "^8.15.6",
+    "resend": "^6.34.1"
+  }
+}

@@ -1,0 +1,31 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+
+# Environment and credentials
+**/.env
+**/.env.*
+!**/.env.example
+*.pem
+*.key
+
+# Generated files and backups
+**/node_modules/
+**/dist/
+*.backup
+*.bak
+*.before-*
+*.sql
+*.dump
+*.sqlite
+*.sqlite3
+*.log
+
+# Local and system files
+.DS_Store
+Thumbs.db
+*.backup-*

@@ -1,0 +1,110 @@
+{
+ "Aries": {
+  "glyph": "♈",
+  "element": "Fire",
+  "modality": "Cardinal",
+  "drives": "impulse, daring and competition",
+  "shorthand": "charges before checking the exit",
+  "motifs": "horns, brass, sparks",
+  "palette": "coral"
+ },
+ "Taurus": {
+  "glyph": "♉",
+  "element": "Earth",
+  "modality": "Fixed",
+  "drives": "comfort, loyalty and stubbornness",
+  "shorthand": "refuses to move without proper upholstery",
+  "motifs": "velvet, clover, brass bells",
+  "palette": "moss"
+ },
+ "Gemini": {
+  "glyph": "♊",
+  "element": "Air",
+  "modality": "Mutable",
+  "drives": "wit, curiosity and contradiction",
+  "shorthand": "talks to both sides of its own argument",
+  "motifs": "mirrors, ribbons, twin masks",
+  "palette": "citrus"
+ },
+ "Cancer": {
+  "glyph": "♋",
+  "element": "Water",
+  "modality": "Cardinal",
+  "drives": "protectiveness, memory and sensitivity",
+  "shorthand": "keeps everybody safe and every receipt",
+  "motifs": "shells, pearls, lace curtains",
+  "palette": "pearl"
+ },
+ "Leo": {
+  "glyph": "♌",
+  "element": "Fire",
+  "modality": "Fixed",
+  "drives": "pride, warmth and performance",
+  "shorthand": "requires a spotlight even while hiding",
+  "motifs": "gilt, velvet, theatrical rays",
+  "palette": "gold"
+ },
+ "Virgo": {
+  "glyph": "♍",
+  "element": "Earth",
+  "modality": "Mutable",
+  "drives": "precision, service and critique",
+  "shorthand": "arrives with a checklist and spare batteries",
+  "motifs": "ledgers, magnifiers, embroidery",
+  "palette": "sage"
+ },
+ "Libra": {
+  "glyph": "♎",
+  "element": "Air",
+  "modality": "Cardinal",
+  "drives": "charm, fairness and aesthetics",
+  "shorthand": "seeks agreement with immaculate styling",
+  "motifs": "scales, satin, gilt frames",
+  "palette": "rose"
+ },
+ "Scorpio": {
+  "glyph": "♏",
+  "element": "Water",
+  "modality": "Fixed",
+  "drives": "intensity, secrecy and loyalty",
+  "shorthand": "never forgets a secret or how it was acquired",
+  "motifs": "black lacquer, keys, dark ink",
+  "palette": "plum"
+ },
+ "Sagittarius": {
+  "glyph": "♐",
+  "element": "Fire",
+  "modality": "Mutable",
+  "drives": "freedom, candor and adventure",
+  "shorthand": "books an escape before finding the map",
+  "motifs": "arrows, passports, campfire stars",
+  "palette": "copper"
+ },
+ "Capricorn": {
+  "glyph": "♑",
+  "element": "Earth",
+  "modality": "Cardinal",
+  "drives": "discipline, ambition and endurance",
+  "shorthand": "turns personal milestones into quarterly goals",
+  "motifs": "stone, ledgers, mountain badges",
+  "palette": "slate"
+ },
+ "Aquarius": {
+  "glyph": "♒",
+  "element": "Air",
+  "modality": "Fixed",
+  "drives": "independence, ideals and eccentricity",
+  "shorthand": "rewrites the rules while declining committee membership",
+  "motifs": "antennas, lightning, blueprints",
+  "palette": "electric"
+ },
+ "Pisces": {
+  "glyph": "♓",
+  "element": "Water",
+  "modality": "Mutable",
+  "drives": "imagination, empathy and escapism",
+  "shorthand": "falls in love with the metaphor instead",
+  "motifs": "mist, tidal pools, moonfish",
+  "palette": "lavender"
+ }
+}
