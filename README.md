@@ -1,55 +1,88 @@
-# gurl. (starter v0.1)
+# gurl. ✦
 
-A private, account-based astrology compatibility journal, built with **React + Vite**, **Express**, **PostgreSQL**, and **Better Auth**. The presentation is deliberately minimal; Kaiser and all illustrated/animated layers are postponed.
+### An astrology compatibility journal with personality.
 
-## What works
+**GURL** is a full-stack application for saving birth charts and exploring astrological compatibility, blending astronomical calculations, private accounts, and an illustrated interactive interface.
 
-- Email/password registration and login with real server sessions.
-- One saved birth chart per user with Sun, Moon, and (when birth time is known) Rising signs.
-- Open-Meteo birthplace lookup, `geo-tz` time-zone resolution, Luxon local-to-UTC conversion, local planetary calculations via Astronomy Engine.
-- Add a named person and save their birth chart plus a **playful** compatibility score and gurl → guuuuurl reaction.
-- Private comparison history, sorted by highest score or newest, search by nickname, edit nickname, delete entries.
-- Responsive UI for desktop/mobile; no need to prepare mascot artwork yet.
+**Design, illustration, and development:** Michael Cosand
+
+**[Try the live app](https://gurl.michaelcosand.com)**
+
+## Preview
+
+![GURL desktop preview](gurl-ui-desktop-preview.png)
+
+![GURL mobile preview](gurl-ui-mobile-preview.png)
+
+## Features
+
+- **Birth charts:** Save Sun, Moon, and Rising signs when birth time is known.
+- **Compatibility:** Compare charts with named people and receive a playful `gurl` to `guuuuurl` rating.
+- **Private history:** Search, sort, rename, and delete saved comparisons.
+- **Accounts:** Email/password authentication with persistent sessions using Better Auth.
+- **Astronomy:** Astronomy Engine, Open-Meteo birthplace search, `geo-tz`, and Luxon.
+- **Visual design:** Responsive layouts, animated zodiac wheels, and original illustrations.
+- **Kaiser:** An original character from Michael Cosand's *Regular City* comic, featured in the center of the zodiac wheels.
+
+## Tech stack
+
+| Layer | Technology |
+| --- | --- |
+| Frontend | React, Vite, JavaScript, CSS |
+| API | Node.js, Express |
+| Database | PostgreSQL |
+| Authentication | Better Auth |
+| Calculations | Astronomy Engine, Luxon, geo-tz |
+| Location search | Open-Meteo |
+| Deployment | Ubuntu, Caddy, HTTPS |
+
+## Astrology calculations
+
+GURL uses tropical zodiac positions calculated from birth information. It computes geocentric Sun and Moon positions and determines the Ascendant when a birth time and location are available. Without a birth time, Rising is omitted and Moon is approximate, with uncertainty handling around sign transitions.
+
+Scores are designed for entertainment and self-exploration, not to predict real-world relationship outcomes.
 
 ## Run locally
 
-Requirements: Node.js 20.19+ (22 LTS recommended), PostgreSQL 15+, and an internet connection for city search.
+**Requirements:** Node.js 20.19+ (22 LTS recommended), PostgreSQL 15+, internet connection for city search.
 
-1. Extract this directory, then open a terminal in `gurl-starter`.
-2. Create a PostgreSQL database (example: `CREATE ROLE gurl WITH LOGIN PASSWORD 'gurl_dev_password'; CREATE DATABASE gurl OWNER gurl;`). Do **not** use that example password on a public deployment.
-3. `cp .env.example .env` (PowerShell: `Copy-Item .env.example .env`) and update `DATABASE_URL` and `BETTER_AUTH_SECRET`. Generate a secret via `openssl rand -base64 32` or another secure generator.
-4. `npm install`.
-5. Initialize Better Auth's tables: `npx auth@latest migrate --config ./server/src/auth.js`. The server code loads the project-root `.env` file directly, so this works from the root. If the CLI prompts about dependencies, approve installation.
-6. Initialize gurl's tables with `npm run db:init`.
-7. `npm run dev` and open **http://localhost:5173**.
+1. Clone the repository:
 
-### Birthplace lookup
+   ```bash
+   git clone https://github.com/ficklement/gurl.git
+   cd gurl
+   ```
 
-The free [Open-Meteo Geocoding API](https://open-meteo.com/en/docs/geocoding-api) needs **no account and no API key** for a noncommercial project. Credit Open-Meteo on any views that display its place data. City search is deliberately initiated by pressing Find or Enter, rather than querying on every keystroke. The service is used only to resolve city coordinates.
+2. Create a PostgreSQL database and dedicated local user.
+3. Run `cp .env.example .env` (PowerShell: `Copy-Item .env.example .env`), then configure `DATABASE_URL` and `BETTER_AUTH_SECRET`. Generate a secret using `openssl rand -base64 32`.
+4. Run `npm install`.
+5. Initialize Better Auth: `npx auth@latest migrate --config ./server/src/auth.js`.
+6. Initialize app tables: `npm run db:init`.
+7. Start development: `npm run dev`, then open **http://localhost:5173**.
 
-## API
+`localhost:5173` is Vite's development address, not the public website. `.env.example` uses port 3001 for the local backend; production uses separate configuration.
 
-- `GET /api/health`
-- `GET /api/places?q=Phoenix` (requires login)
-- `GET /api/chart` and `PUT /api/chart` (requires login)
-- `GET /api/comparisons`, `POST /api/comparisons` (requires login)
-- `PATCH /api/comparisons/:id`, `DELETE /api/comparisons/:id` (requires login)
-- Better Auth handles `GET|POST /api/auth/*`.
+## API overview
 
-## The Big Three math
+| Route | Purpose |
+| --- | --- |
+| `GET /api/health` | Health check |
+| `GET /api/places?q=Phoenix` | Authenticated birthplace search |
+| `GET /api/chart`, `PUT /api/chart` | Personal birth chart |
+| `GET /api/comparisons`, `POST /api/comparisons` | Saved comparisons |
+| `PATCH /api/comparisons/:id`, `DELETE /api/comparisons/:id` | Modify or delete a comparison |
+| `GET/POST /api/auth/*` | Better Auth |
 
-- Tropical (Western) zodiac: each 30° longitude sector maps to a sign, starting at the vernal equinox (Aries).
-- Sun and Moon are apparent/geocentric ecliptic longitudes of date.
-- Ascendant is calculated from local apparent sidereal time, geographic latitude and ecliptic obliquity using a standard horizon-intersection formula. Before public deployment, verify rising-sign examples against reliable chart references, especially near sign transitions, very high latitudes, and historical dates.
-- If exact birth time is unknown, we use local noon for an approximate Moon. We omit Rising. Sun or Moon are marked uncertain and omitted from scoring if their signs change within the birth date.
-- If a chart is updated later, existing readings retain their original score. A future version should support recalculating historical scores by scoring version.
+## Kaiser and what's next
 
-## Important before a public launch
+Kaiser already appears at the center of the animated zodiac wheels. Additional appearances, context-sensitive dialogue, and expressive layered animations are **planned features**, not yet completed.
 
-This is a **local development starter**, not a security-reviewed production deployment. Add proper account recovery/email verification, rate limiting and abuse prevention, historical time-zone edge-case tests, additional input validation, consent/privacy copy, backups, and HTTPS on the production domain. Birth data about other people is sensitive: keep readings private and offer deletion. No real-world romantic outcome is predicted by the scoring method.
+GURL is actively developed. Planned improvements also include more astronomical edge-case validation, accessibility refinements, and ongoing security and privacy hardening.
 
-Do not publish actual passwords, `.env`, or user birth data to GitHub.
+User birth data and readings are private. Production secrets and records do not belong in this repository.
 
-## Future art/animation seam
+## Credits
 
-Later, Kaiser can occupy a `MascotStage` React component placed beside the result panel or above it on small screens. The body, head, eyes and mouths can be transparent assets layered and animated with GSAP, with `rating` as its only input. No current page depends on the mascot.
+**Michael Cosand:** design, illustration, and development  
+**Live application:** https://gurl.michaelcosand.com  
+**Repository:** https://github.com/ficklement/gurl
